@@ -1,1 +1,1 @@
-# Python-Web-Projects
+# Attempted Django Projects xD
