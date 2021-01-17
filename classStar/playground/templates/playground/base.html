@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lets study for serious!</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	
+	<style>
+		.sidebar {
+			position: sticky;
+		}
+		.nav {
+			list-style-type: none;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+
+	<nav>
+		<ul>
+			<li class="nav"><a href="{% url 'index' %}">Home | </a></li>
+			<li class="nav"><a href="{% url 'signup' %}">signup | </a></li>
+			<li class="nav"><a href="{% url 'profile' request.user %}">my profile | </a></li>
+			<li class="nav"><a href="{% url 'logout' %}">logout | </a></li>
+			<li class="nav"><a href="{% url 'makepost' %}">Make Post</a></li>
+			<li class="nav"> | {{ request.user }} </li>
+			<li class="nav"><a href="notifications/all">notifications</a></li>
+		</ul>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<nav class="col-sm-3">
+				{% include "playground/sidediv.html" %}
+				
+			</nav>
+			<div class="col-sm-6">
+				{% block mainDiv %} {% endblock %}
+				
+				
+			</div>
+
+			<div class="col-sm-3">
+				{% include "playground/rtsidediv.html" %}
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</body>
+</html>

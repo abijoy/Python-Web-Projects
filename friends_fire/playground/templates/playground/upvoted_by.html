@@ -1,0 +1,18 @@
+{% extends "playground/base.html" %}
+
+{% block title %}{{ block.super }} - Upvoted by {% endblock %}
+
+{% block content %}
+	<p><a href="{% url 'post_details' post.id %}">{{ post.title }}</a> | {{ post.author }}.
+	</p>
+	<hr>
+	<p>
+		Upvoted by - 
+	</p>
+	<ul>
+		{% for up in up_by %}
+			<li>{{ up.user.username }}</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

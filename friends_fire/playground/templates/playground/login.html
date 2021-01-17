@@ -1,0 +1,17 @@
+{% extends "playground/base.html" %}
+
+{% block content %}
+	<div>
+		<form method="post" action="">
+			{% csrf_token %}
+			<table>
+			<tr><td></td><td><h1>Login</h1></td></tr>
+			{{ form.as_table }}
+			<tr><td></td>
+			<td><input type="submit" class="btn" name="" value="Log In"></td>
+			</tr>
+			</table>
+			<p>Don't have a account ? <a href="{%  url 'signup' %}">Create Account</a></p>
+		</form>
+	</div>
+{% endblock %}

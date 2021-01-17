@@ -1,0 +1,18 @@
+language: python
+
+python:
+    - "2.7"
+
+install:
+    pip install tox --use-mirrors
+
+env:
+    - TOXENV = py27-django18
+
+script:
+    tox
+
+branches:
+    only:
+        - master
+        - nf_concat_support

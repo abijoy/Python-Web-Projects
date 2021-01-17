@@ -1,0 +1,15 @@
+{% extends "playground/base.html" %}
+
+{% block content %}
+	<form method="post"> {% csrf_token %}
+	{{ form.as_p }}
+	<p>
+		<input type="submit" value="Find">
+	</p>
+</form>
+
+<div>
+	{{ lyrics }}
+</div>
+
+{% endblock %}

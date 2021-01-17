@@ -1,0 +1,12 @@
+{% extends "playground/base.html" %}
+	{% block mainDiv %}
+	
+	<ul>
+		
+		{% for p in posts %}
+			<li style="style-type:none">{{ p.content }}<br>upvotes: {{ p.postvote_set.all.count }} | comments: {{p.comment_set.all.count }} | id: {{p.id }} |<span style="color:green">{{p.course.course_code }} | <a href="{% url 'profile' p.user %}">{{p.user}}</a></span></li>
+		{% endfor %}
+	</ul>
+
+	{% endblock %}
+

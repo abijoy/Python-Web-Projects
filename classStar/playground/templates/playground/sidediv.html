@@ -1,0 +1,10 @@
+
+
+		
+		<ul>
+		<h2>Your couses</h2>
+			{% for c in my_courses %}
+				<li><a href="{% url 'posts_under_course' c.course_code %}">{{ c.course_code }}</a></li>
+			{% endfor %}
+		</ul>
+

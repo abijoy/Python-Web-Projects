@@ -1,0 +1,25 @@
+{% extends "playground/base.html" %}
+
+{% block content %}
+
+<ul>
+{% for post in posts %}
+	<li>
+		<div>
+			<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> | {{ post.author }}</p>
+			<p>
+
+	<a href="{% url 'upvote' post.id %}" title="upvote and view"><b>&uarr;</b></a>
+	{% if post in upvoted_posts %}
+	<span style="color: rgb(255, 69, 0)">{{ post.upvote_set.all.count }}</span>
+	{% else %}
+	{{ post.upvote_set.all.count }}
+	{% endif %}
+	 | <span><a href="{{ post.get_absolute_url }}">comments</a>: {{ post.comment_set.all.count }}</span>
+</p></div>
+	</li>
+	<br>
+{% endfor %}
+</ul>
+{% endblock %}
+

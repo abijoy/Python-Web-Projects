@@ -1,0 +1,48 @@
+{% extends "playground/base.html" %}
+
+{% block content %}
+<div>
+	<p><b>Title::</b>{{ post.title }}</p>
+	<p>
+		{% if can_up %}
+		<a href="{% url 'upvote' post.id %}">Upvote</a>: {{ upvotes }}
+		{% else %}
+		Upvoted: <span style="color: rgb(255, 69, 0)">{{ upvotes }}
+		<a href="{% url 'unvote' post.id %}">Unvote</a>
+		</span>
+		{% endif %}
+		| by <b>{{ post.author }}</b> | 
+		<a href="{% url 'upvoted_by' post.id %}">UpvotedBy</a>
+	</p>
+	<hr>
+	<p>{{ post.content|safe }}</p>
+</div>
+<br>
+<div>
+
+	<p>{{ post.comment_set.all.count }} - Comments</p>
+	<hr>
+	<div>
+		<div>
+			<form method="post">{% csrf_token %}
+				<table>
+					{{ form.as_table }}
+					<tr>
+						<td></td>
+						<td><input type="submit" value="comment"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<ul>
+			{% for comment in post.comment_set.all %}
+				<li>
+					<b style="color: green">{{ comment.user }}</b> : {{ comment.cmnt }}
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+</div>
+
+{% endblock %}
